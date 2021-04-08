@@ -14,6 +14,7 @@ data["Customer_Age"].hist(bins=30)
 plt.show()
 print(data)
 
+#Insights from visualization
 avg_CustomerAge_by_Gender = data.groupby("Gender")["Customer_Age"].mean()
 print(avg_CustomerAge_by_Gender)
 avg_CustomerAge_by_Gender.plot(kind="bar", title="Mean Customer Age by Gender")
@@ -31,6 +32,57 @@ print(data_grouped)
 
 data_groupedby = data.groupby('Gender')['Customer_Age'].count()
 print(data_groupedby)
+
+
+#Generate Valuable Insights from visualization###
+
+
+import matplotlib.pyplot as plt
+import pandas as pd
+
+
+fig, ax = plt.subplots()
+
+def SHOW():  #Create function to  reusable code
+    plt.show()
+
+data = pd.read_csv("Train.csv")
+
+data_ID = data["ID"]
+data_COST = data["Cost_of_the_Product"]
+print(data_ID.head(3)), print(data_COST.head(3))
+
+ax.plot(data.head(3)["ID"], data.head(3)["Cost_of_the_Product"], marker="o", linestyle="--",color="g")
+ax.set_title("ID CUSTOMER BY COST OF THE PRODUCT")
+plt.grid(True)
+plt.xlabel('ID')
+plt.ylabel('Cost')
+SHOW()
+
+
+ncalls = data["Customer_care_calls"].value_counts() #counting values for number of calls
+
+
+print(ncalls)
+
+data3 =  data.iloc[0:3, 0:2]
+print(data3)
+
+
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+
+data = pd.read_csv("Train.csv")
+
+data['Mode_of_Shipment'].value_counts()[:3].plot(kind='barh',title="Mode of Shipment")
+plt.grid(True)
+plt.show()
+
+ship = data['Mode_of_Shipment'].value_counts()
+print(ship)
 
 # Replace missing values or dropping duplicates########
 print(data)
@@ -95,9 +147,38 @@ import matplotlib.pyplot as plt
 
 data_seaborn = pd.read_csv("BankData.csv")
 sns.countplot(x="Education_Level", data=data_seaborn)
+plt.title("Customers Education Level")
 plt.show()
 
+#Insight from visualization
 sns.scatterplot(x="Customer_Age", y="Dependent_count", data=data_seaborn)
+plt.show()
+
+#Insight from visualization
+sns.catplot(x="Education_Level", y ="Gender", hue="Gender" ,data=data_seaborn.head(100))
+plt.show()
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+#Insight from visualization
+data3 = pd.read_csv("Train.csv")
+sns.regplot(x=data3.head(50)["ID"],y=data3.head(50)["Cost_of_the_Product"])
+plt.title("Cost of Product by ID Customer")
+plt.show()
+
+
+
+import seaborn as sns
+import matplotlib as plt
+import matplotlib.pyplot as plt
+import pandas as pd
+
+
+data = pd.read_csv("Train.csv")
+sns.catplot(x= "Customer_care_calls", data= data.head(5),
+                col="ID", kind='box')
 plt.show()
 
 # Merge DataFrames######
@@ -145,3 +226,12 @@ print(mean)
 #Calculate MEDIAN on Weight in grams  using NUMPY
 median = np.median(np_DATA[:,10])
 print(median)
+
+#Append new data using NUMPY APPEND
+import numpy
+
+appenddata = numpy.array([np_vals])
+
+data_appended = numpy.append (appenddata, ["To be examined"])
+
+print(data_appended)
