@@ -89,6 +89,7 @@ print(data)
 data.isna()
 data.isna().any()
 data.isna().sum()
+data  = data.replace(0)
 
 import matplotlib.pyplot as plt
 
@@ -117,8 +118,8 @@ print_function_new_dict() # Use Function to create reusable code
 print(new_dict.sort_index(level="CLIENTNUM", ascending=False))
 print(sorted(new_dict["CLIENTNUM"]))
 
-# Looping and Iterrows ###########
-# Import CSV data
+### Looping and Iterrows ###########
+
 import pandas as pd
 
 dataloop = pd.read_csv('BankData.csv', index_col=0)
@@ -235,3 +236,4 @@ appenddata = numpy.array([np_vals])
 data_appended = numpy.append (appenddata, ["To be examined"])
 
 print(data_appended)
+#version 160421
